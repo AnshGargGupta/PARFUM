@@ -1,0 +1,234 @@
+/* style.css */
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #111;
+  transition: all 0.3s ease-in-out;
+}
+
+body.dark {
+  background: #121212;
+  color: #f5f5f5;
+}
+
+.navbar {
+  background: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ddd;
+}
+
+.hero {
+  text-align: center;
+  padding: 2rem;
+  background: #eee;
+}
+
+.dark .hero {
+  background: #1e1e1e;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.carousel img {
+  width: 100%;
+  max-width: 600px;
+  scroll-snap-align: start;
+  margin: 0 auto;
+  display: block;
+}
+
+.intro {
+  margin-top: 1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: transform 0.3s;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.buy-btn {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 10px 20px;
+  background: #111;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.buy-btn:hover {
+  background: #333;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+.filters select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.form-section {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-section h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+form input,
+form textarea,
+form button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form button {
+  background: #000;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background: #333;
+}
+
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: #000;
+  color: white;
+  margin-top: 2rem;
+}
+
+.dark .card {
+  background: #222;
+  color: white;
+}
+
+.dark .form-section,
+.dark .filters select,
+.dark form input,
+.dark form textarea {
+  background: #1c1c1c;
+  color: white;
+  border-color: #444;
+}
+
+.dark .buy-btn {
+  background: #333;
+}
+
+/* product image */
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+  /* Updated Animation */
+.discount-animation {
+  display: none;
+  margin-top: 12px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--success-color);
+  text-align: center;
+  background: rgba(40, 167, 69, 0.1);
+  border: 1px solid var(--success-color);
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+  animation: slideIn 0.6s ease-out;
+}
+
+/* New animation: only slide in, no fade out */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+

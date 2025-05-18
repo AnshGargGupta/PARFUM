@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Collection</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script2.js"></script>
+</head>
+<body>
+  <header class="navbar">
+    <h1>Perfume Haven</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="buy.html">Buy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="logoutBtn" style="padding:6px 12px; border-radius:6px; border:none; cursor:pointer; background: transparent; color:#fff; margin-left: 10px;">Logout</button></li>
+      <li><button id="theme-toggle">Theme</button></li>
+    </ul>
+  </header>
+
+  <section class="filters">
+    <select id="brandFilter">
+      <option value="all">All Brands</option>
+      <option value="Dior">Dior</option>
+      <option value="Chanel">Chanel</option>
+      <option value="Tom Ford">Tom Ford</option>
+      <option value="Armani">Armani</option>
+      <option value="Versace">Versace</option>
+      <option value="Gucci">Gucci</option>
+      <option value="YSL">YSL</option>
+      <option value="Burberry">Burberry</option>
+      <option value="Prada">Prada</option>
+      <option value="Calvin Klein">Calvin Klein</option>
+      <option value="Givenchy">Givenchy</option>
+      <option value="Dolce & Gabbana">Dolce & Gabbana</option>
+      <option value="Hugo Boss">Hugo Boss</option>
+      <option value="Montblanc">Montblanc</option>
+      <option value="Bella Vita">Bella Vita</option>
+
+    </select>
+
+    <select id="priceSort">
+      <option value="default">Default</option>
+      <option value="low">Low to High</option>
+      <option value="high">High to Low</option>
+    </select>
+  </section>
+
+  <section class="grid" id="perfumeGrid">
+    <!-- Perfume Cards -->
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Perfume Haven. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const perfumes = [
+      { name: "Dior Sauvage", brand: "Dior", price: 120 , image:"https://ifragranceofficial.com/wp-content/uploads/2021/08/dior-sauvage-eau-de-parfum-2-scaled.jpg"},
+      { name: "Chanel No. 5", brand: "Chanel", price: 150 ,image:"https://www.historyhit.com/app/uploads/2022/09/Chanel_N%C2%B05-Cover-Image.jpg?x79957" },
+      { name: "Tom Ford Noir", brand: "Tom Ford", price: 200 ,image:"https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw410cc79e/images/hi-res/alternates/PID_alternate5/PID_alternate5_1109/P2141008_5.jpeg"},
+      { name: "Armani Code", brand: "Armani", price: 110 ,image:"https://fraguru.com/mdimg/secundar/o.99831.jpg" },
+      { name: "Versace Eros", brand: "Versace", price: 100 ,image:"https://cdn.shopify.com/s/files/1/0388/7287/5140/products/versace-eros-edt-perfume-for-him-348617.jpg?v=1652722824" },
+      { name: "Gucci Bloom", brand: "Gucci", price: 135 ,image:"https://fimgs.net/himg/o.QBGex3WNkxx.jpg" },
+      { name: "YSL Libre", brand: "YSL", price: 140 ,image:"https://fimgs.net/mdimg/secundar/o.74439.jpg"},
+      { name: "Burberry Hero", brand: "Burberry", price: 125 ,image:"https://th.bing.com/th/id/OIP.izyTBjZeco8WijVzZiL-dwHaHa?rs=1&pid=ImgDetMain"},
+      { name: "Prada L'Homme", brand: "Prada", price: 145 ,image:"https://fimgs.net/images/secundar/o.49676.jpg"},
+      { name: "Calvin Klein Eternity", brand: "Calvin Klein", price: 90 ,image:"https://piimages.parfumo.de/2/3/183677_e8973f920d5efad9dee541ec99522ff2_eternity-for-men-parfum.jpg"},
+      { name: "Givenchy Gentleman", brand: "Givenchy", price: 130 ,image:"https://th.bing.com/th/id/OIP.Hyu-U2QCBoXlfQWe-XSuPAHaHa?rs=1&pid=ImgDetMain"},
+      { name: "Dolce & Gabbana Light Blue", brand: "Dolce & Gabbana", price: 115 ,image:"https://perfumehubs.com.au/wp-content/uploads/2021/12/dolce-gabbana-light-blue-eau-intense-for-men-perfume-for-him-134164.png"},
+      { name: "Hugo Boss Bottled", brand: "Hugo Boss", price: 105 ,image:"https://www.ambrer.ru/images/all/11/19624/big/img_16.jpg" },
+      { name: "Gucci Guilty", brand: "Gucci", price: 120 ,image:"https://th.bing.com/th/id/OIP.fx2p8Bw66_Zy8t51LL5iSgHaHa?pid=ImgDet&w=474&h=474&rs=1"},
+      { name: "Gucci Pour Homme", brand: "Gucci", price: 140 ,image:"https://th.bing.com/th/id/OIP.0oTN1FRExkSU0UyS8OOT5AHaJ4?pid=ImgDet&w=474&h=632&rs=1"},
+      { name: "Montblanc Explorer", brand: "Montblanc", price: 95 ,image:"https://cdn-cosmaxprestige.b-cdn.net/wp-content/uploads/2021/10/Montblanc_Explorer_600x600px.jpg"},
+       { name: "Dior Homme Intense", brand: "Dior", price: 135, image: "https://th.bing.com/th/id/OIP.mCWuEULVfQI3hjtMBCbJawHaHa?pid=ImgDet&w=474&h=474&rs=1" },
+  { name: "Miss Dior", brand: "Dior", price: 125, image: "https://files.vogue.co.th/uploads/430773677_737531995226128_1895200280345452603_n.webp" },
+  { name: "Fahrenheit", brand: "Dior", price: 130, image: "https://www.fashionbeans.com/wp-content/uploads/2023/03/thierrykubafilms_abottleofdiorfahrenheitonfire.jpg" },
+
+  // Chanel
+  { name: "Chanel Bleu de Chanel", brand: "Chanel", price: 160, image: "https://th.bing.com/th/id/OIP.gNv-2ENRm3iZw4jLJN5kIwAAAA?rs=1&pid=ImgDetMain" },
+  { name: "Chanel Coco Mademoiselle", brand: "Chanel", price: 155, image: "https://fimgs.net/photogram/p1200/p1/gw/k0Od1hCzcsV0DV6g.jpg" },
+  { name: "Chanel Allure Homme Sport", brand: "Chanel", price: 145, image: "https://puls-img.chanel.com/1670940244152-onelandingpagemajorpush1500x1600pxmobilejpg_3200x3000.jpg" },
+
+  // Tom Ford
+  { name: "Tom Ford Oud Wood", brand: "Tom Ford", price: 240, image: "https://th.bing.com/th/id/OIP.oAIkSiR9eoa3s2DLK9H5iQHaHa?rs=1&pid=ImgDetMain" },
+  { name: "Tom Ford Black Orchid", brand: "Tom Ford", price: 220, image: "https://th.bing.com/th/id/OIP.x9suKOce1VZWWIZ8kwv2jgHaHa?rs=1&pid=ImgDetMain" },
+  { name: "Tom Ford Tobacco Vanille", brand: "Tom Ford", price: 250, image: "https://www.sephora.de/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw520ab3f5/images/hi-res/all/alternates/PID_alternate1/P533009_1.jpg" },
+   { name: "Bella Vita Organic Tiger", brand: "Bella Vita", price: 25, image: "https://th.bing.com/th/id/R.4bbf9cbbede7f495508adf52e770fd79?rik=f9yTKA2XK9kq2g&riu=http%3a%2f%2fbellavitaorganic.com%2fcdn%2fshop%2ffiles%2fTiger-10_1_2_1.jpg%3fv%3d1720330847&ehk=A7H99RtEfvU1%2beYWCY49KCwzVzCZ9QKpoBC45xwo5gY%3d&risl=&pid=ImgRaw&r=0" },
+ { name: "Bella Vita Paradiso Eau De Parfum", brand: "Bella Vita", price: 60, image: "https://staticg.sportskeeda.com/editor/2023/11/1748d-16995085596700-1920.jpg?w=840" },
+ { name: "Bella Vita Oud", brand: "Bella Vita", price: 15, image: "https://5.imimg.com/data5/ANDROID/Default/2022/9/NO/IH/CF/27376278/product-500x500.jpg" },
+ { name: "Bella Vita Impact", brand: "Bella Vita", price: 40, image: "https://www.netmeds.com/images/product-v1/600x600/1049325/bella_vita_organic_impact_man_eau_de_cologne_perfume_for_men_100_ml_431050_3_0.jpg" },  
+ // Armani
+  { name: "Acqua di Gio", brand: "Armani", price: 115, image: "https://www.sephora.fr/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw0d4df33c/images/hi-res/alternates/PID_alternate3/PID_alternate3_395/P3266008_3.jpg" },
+  { name: "Si by Armani", brand: "Armani", price: 130, image: "https://th.bing.com/th/id/R.d070cc5d5637136b17e0873a5abb6ee2?rik=2C3IlQrzCq5rhQ&riu=http%3a%2f%2flatfusa.com%2fmedia%2fuploads%2f2017%2f06%2f21%2fsi_edited-1.jpg&ehk=hELzUOMkWhq8wv7B9z4WytRgPXwclrq7M7RGJMkWqjo%3d&risl=&pid=ImgRaw&r=0" },
+  { name: "Emporio Armani Stronger With You", brand: "Armani", price: 120, image: "https://th.bing.com/th/id/OIP.rKM_2paAuAc2EUGt49UDIAHaHl?pid=ImgDet&w=474&h=485&rs=1" },
+
+  // Versace
+  { name: "Versace Dylan Blue", brand: "Versace", price: 110, image: "https://th.bing.com/th/id/OIP.ngDUjnTutEGwTMMECJDrRQHaHa?rs=1&pid=ImgDetMain" },
+  { name: "Versace Pour Homme", brand: "Versace", price: 105, image: "https://th.bing.com/th/id/R.9e293e9110d2f2abf48776e6b40452d5?rik=u%2b9cNysS%2fcDYJQ&riu=http%3a%2f%2fc.shld.net%2frpx%2fi%2fs%2fi%2fspin%2f-122%2fprod_1448265012%3f%3fhei%3d64%26wid%3d64%26qlt%3d50&ehk=jZSP1pe%2fs470iBto2cu0PKNE5FIzPVflESHMaicdbGE%3d&risl=&pid=ImgRaw&r=0" },
+  { name: "Versace Bright Crystal", brand: "Versace", price: 125, image: "https://th.bing.com/th/id/OIP.nS2zFfgsk_NJXcdYwRX6JgHaHa?rs=1&pid=ImgDetMain" },
+
+  // Gucci
+  { name: "Gucci Flora", brand: "Gucci", price: 135, image: "https://th.bing.com/th/id/OIP.w6CMonkp6KwBMVvcqktYwQAAAA?rs=1&pid=ImgDetMain" },
+  { name: "Gucci Bamboo", brand: "Gucci", price: 130, image: "https://th.bing.com/th/id/R.c4c398dbd5f23831c9c799283e3c9ef4?rik=5FumHzWZP%2baqaA&riu=http%3a%2f%2fcache2.senatus.net%2ffiles%2fmyerscms%2fsenatus_vbyX2o.jpg&ehk=W%2b5Mt7uk%2fFVI9oICrmm0szz1jRtZ8V15nPRD4Tcecfc%3d&risl=&pid=ImgRaw&r=0" },
+  { name: "Gucci Rush", brand: "Gucci", price: 125, image: "https://missi.com.vn/wp-content/uploads/2016/02/gucci-rush.jpg" },
+
+  // YSL
+  { name: "YSL Y Eau de Parfum", brand: "YSL", price: 150, image: "https://th.bing.com/th/id/OIP.keiRD3ogyNdbo_a-ttyWzQHaHa?rs=1&pid=ImgDetMain" },
+  { name: "YSL Black Opium", brand: "YSL", price: 145, image: "https://media.theperfumeshop.com/medias/sys_master/images/hfb/h53/8866702753822/3614273863360-4/3614273863360-4.jpg" },
+  { name: "YSL Mon Paris", brand: "YSL", price: 140, image: "https://th.bing.com/th/id/OIP.Bjw0UTU0W_AK12GSI-0N2gHaFj?rs=1&pid=ImgDetMain" },
+
+  // Burberry
+  { name: "Burberry Brit", brand: "Burberry", price: 110, image: "https://th.bing.com/th/id/OIP.Q2_XDLMYqm1A1qOVfl1abgHaHa?rs=1&pid=ImgDetMain" },
+  { name: "Burberry Touch", brand: "Burberry", price: 115, image: "https://assets.burberry.com/is/image/Burberryltd/f4f86c540772a059519df77c185618e9d3e3e028.jpg?$BBY_V2_B_3x4$&wid=1880&hei=2500" },
+  { name: "Burberry Weekend", brand: "Burberry", price: 100, image: "https://pinoyfragrance.com/cdn/shop/products/burberry-weekend-edp-for-women-100ml.jpg?v=1618579246" },
+
+  // Prada
+  { name: "Prada Luna Rossa", brand: "Prada", price: 140, image: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/32c375135692969.61ec34edbd489.jpg" },
+  { name: "Prada Candy", brand: "Prada", price: 125, image: "https://th.bing.com/th/id/OIP.kTA404PRAqWomLsmW1ky5AAAAA?rs=1&pid=ImgDetMain" },
+  { name: "Prada Infusion d'Iris", brand: "Prada", price: 135, image: "https://th.bing.com/th/id/OIP.rPG80hfUddNwq0xUtFdL3AHaHa?rs=1&pid=ImgDetMain" },
+
+  // Calvin Klein
+  { name: "Calvin Klein CK One", brand: "Calvin Klein", price: 95, image: "https://image-optimizer-reg.production.sephora-asia.net/images/product_images/closeup_4_Product_3614222155409-Calvin-Klein-One-Gold-Eau-De-Toilette-200ml_67c4a2cb714257f1097e3e26d6d32a9688212ce8_1661701809.png" },
+  { name: "Calvin Klein Obsession", brand: "Calvin Klein", price: 100, image: "https://th.bing.com/th/id/OIP.q6TP_cT6OvpVF6ml871x-QHaHa?pid=ImgDet&w=474&h=474&rs=1" },
+  { name: "Calvin Klein Euphoria", brand: "Calvin Klein", price: 105, image: "https://cdn.shopify.com/s/files/1/1442/8846/products/calvin-klein-women-s-perfume-calvin-klein-euphoria-eau-de-parfum-women-s-perfume-spray-30ml-50ml-100ml-32814566670495.png?v=1653040948" },
+
+  // Givenchy
+  { name: "Givenchy Irresistible", brand: "Givenchy", price: 135, image: "https://lesfacons.com/wp-content/uploads/2022/01/GIVENCHY-BEAUTY-IRRESISTIBLE-EAU-DE-TOILETTE-FRAICHE-FRAGRANCE-1.jpg" },
+  { name: "Givenchy Play", brand: "Givenchy", price: 125, image: "https://3.bp.blogspot.com/-ZP4B3XkkpLw/U3ukeKQiavI/AAAAAAABIzU/hOOPNAIknbo/s1600/P1260919.JPG" },
+  { name: "Givenchy Ange ou Démon", brand: "Givenchy", price: 140, image: "https://piimages.parfumo.de/5/2/179_2e328761e6117357920f6d03901eedaf.jpg" },
+
+  // Dolce & Gabbana
+  { name: "The One for Men", brand: "Dolce & Gabbana", price: 125, image: "https://scentgrail.com/wp-content/uploads/2022/07/Dolce-and-Gabbana-The-One-Eau-de-Parfum-bottle-and-box.jpg" },
+  { name: "Dolce & Gabbana Pour Femme", brand: "Dolce & Gabbana", price: 130, image: "https://m.media-amazon.com/images/S/aplus-media-library-service-media/bd8bdefe-6b9c-401c-93e7-9a0ce76bd05c.__CR0,324,3000,2250_PT0_SX800_V1___.png" },
+  { name: "Dolce & Gabbana K", brand: "Dolce & Gabbana", price: 120, image: "https://th.bing.com/th/id/OIP.B1-CgWQZKOX6d3vLC2liUAAAAA?rs=1&pid=ImgDetMain" },
+
+  // Hugo Boss
+  { name: "Boss The Scent", brand: "Hugo Boss", price: 115, image: "https://ifragranceofficial.com/wp-content/uploads/2023/09/Boss-The-Scent-EDT-Review.jpg" },
+  { name: "Hugo Man", brand: "Hugo Boss", price: 105, image: "https://cdn.nicehair.dk/products/66392/hugo-boss-hugo-man-edt-200-ml-1620384759.jpg" },
+  { name: "Boss Bottled Night", brand: "Hugo Boss", price: 110, image: "https://th.bing.com/th/id/OIP.erPjSw6JsTZqIw8E-JU6aAHaHa?rs=1&pid=ImgDetMain" },
+
+  // Montblanc
+  { name: "Montblanc Legend", brand: "Montblanc", price: 100, image: "https://fimgs.net/mdimg/secundar/o.74267.jpg" },
+  { name: "Montblanc Emblem", brand: "Montblanc", price: 95, image: "https://mundoreloj.com.co/wp-content/uploads/2023/09/Perfume-Mont-blanc-Emblem-caballero-3386460058728.jpg" },
+  { name: "Montblanc Individuel", brand: "Montblanc", price: 90, image: "https://labelleperfumes.com/cdn/shop/products/MONT-BLANC-INDIVIDUEL-MEN-AD_2160x.jpg?v=1679348326" }
+
+  
+];
+
+    const grid = document.getElementById("perfumeGrid");
+    const brandFilter = document.getElementById("brandFilter");
+    const priceSort = document.getElementById("priceSort");
+
+    function renderPerfumes(list) {
+      grid.innerHTML = "";
+      list.forEach(perfume => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${perfume.image}" alt="${perfume.name}" class="product-image">
+
+          <h3>${perfume.name}</h3>
+          <p>Brand: ${perfume.brand}</p>
+          <p>Price: $${perfume.price}</p>
+          <a class="buy-btn" href="buy.html?perfume=${encodeURIComponent(perfume.name)}">Buy Now</a>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function applyFilters() {
+      let filtered = [...perfumes];
+      const brand = brandFilter.value;
+      const sort = priceSort.value;
+
+      if (brand !== "all") {
+        filtered = filtered.filter(p => p.brand.toLowerCase() === brand.toLowerCase());
+      }
+
+      if (sort === "low") {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sort === "high") {
+        filtered.sort((a, b) => b.price - a.price);
+      }
+
+      renderPerfumes(filtered);
+    }
+
+    brandFilter.addEventListener("change", applyFilters);
+    priceSort.addEventListener("change", applyFilters);
+
+    renderPerfumes(perfumes);
+
+    
+  </script>
+
+
+
+
+  <script>
+  window.onload = () => {
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      // Not logged in, redirect to login page
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+<script>
+  // Logout functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser'); // clear login info
+    window.location.href = 'login.html';     // redirect to login page
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <h1>Perfume Haven</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="collection.html">Collection</a></li>
+        <li><a href="buy.html">Buy</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><button id="logoutBtn" style="padding:6px 12px; border-radius:6px; border:none; cursor:pointer; background: transparent; color:#fff; margin-left: 10px;">Logout</button></li>
+        <li><button id="theme-toggle">Theme</button></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="form-section">
+    <h2>Contact Us</h2>
+    <form action="https://formsubmit.co/gargansh328@gmail.com" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="tel" name="phone" placeholder="Enter your 10-digit phone number" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required />
+      <textarea name="message" rows="4" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <p>Phone: 7889196330 | Email: gargansh328@gmail.com</p>
+  </section>
+
+  <footer><p>&copy; 2025 Perfume Haven</p>
+  </footer>
+
+
+  <script>
+  window.onload = () => {
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      // Not logged in, redirect to login page
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+<script>
+  // Logout functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser'); // clear login info
+    window.location.href = 'login.html';     // redirect to login page
+  });
+</script>
+
+</body>
+</html>

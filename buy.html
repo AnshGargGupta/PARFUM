@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Perfume</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="script.js"></script>
+</head>
+<body>
+
+  <!-- ✅ Navbar -->
+<header class="navbar">
+    <h1>Perfume Haven</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="buy.html">Buy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="logoutBtn" style="padding:6px 12px; border-radius:6px; border:none; cursor:pointer; background: transparent; color:#fff; margin-left: 10px;">Logout</button></li>
+      <li><button id="theme-toggle">Theme</button></li>
+    </ul>
+  </header>
+
+  <!-- ✅ Order Form -->
+   <section class="form-section">
+  <h2>Place Your Perfume Order</h2>
+  <form id="buyForm" action="https://formsubmit.co/gargansh328@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="tel" name="phone" placeholder="Enter your 10-digit phone number" pattern="[0-9]{10}" title="Please enter exactly 10 digits" required />
+    <input type="text" id="perfumeName" name="perfume" placeholder="Perfume Name" required />
+    <input type="#" name="adress" placeholder="Address" required />
+    <textarea name="message" rows="4" placeholder="Additional Details (optional)"></textarea>
+    <input type="text" id="coupon" placeholder="Enter Coupon Code (optional)" />
+    <div id="discountAnimation" class="discount-animation">🎉 10% Discount Applied!</div>
+    <button type="submit">Place Order</button>
+  </form>
+  </section>
+
+ <footer><p>&copy; 2025 Perfume Haven</p></footer>
+
+  <!-- ✅ Script -->
+  <script>
+    // Pre-fill perfume name from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const perfume = urlParams.get('perfume');
+    if (perfume) {
+      document.getElementById('perfumeName').value = decodeURIComponent(perfume);
+    }
+
+    // Theme toggle
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+    }
+
+    window.onload = () => {
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark");
+      }
+    };
+
+    // Coupon logic
+    let currentCouponIndex = parseInt(localStorage.getItem('couponIndex')) || 1;
+    const form = document.getElementById("buyForm");
+    const couponInput = document.getElementById("coupon");
+    const animationDiv = document.getElementById("discountAnimation");
+
+    form.addEventListener("submit", function (e) {
+      const enteredCode = couponInput.value.trim().toUpperCase();
+      const expectedCode = `ANSH${currentCouponIndex}`;
+
+      if (enteredCode === expectedCode) {
+        e.preventDefault();
+        animationDiv.style.display = "block";
+        animationDiv.classList.remove("discount-animation");
+        void animationDiv.offsetWidth; // trigger reflow
+        animationDiv.classList.add("discount-animation");
+
+        setTimeout(() => {
+          animationDiv.style.display = "none";
+          localStorage.setItem('couponIndex', currentCouponIndex + 1);
+          form.submit();
+        }, 1500);
+      } else if (enteredCode === "") {
+        
+      } else {
+        e.preventDefault();
+        alert("Invalid or already used coupon code.");
+      }
+    });
+  </script>
+  
+
+  <script>
+  window.onload = () => {
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      // Not logged in, redirect to login page
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+
+<script>
+  // Logout functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser'); // clear login info
+    window.location.href = 'login.html';     // redirect to login page
+  });
+</script>
+  
+
+</body>
+</html>

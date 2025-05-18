@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfume Haven</title>
+  <link rel="stylesheet" href="style2.css">
+  <script defer src="script2.js"></script>
+  
+</head>
+<body>
+  <header class="navbar sticky">
+    <h1>Perfume Haven</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collection.html">Collection</a></li>
+      <li><a href="buy.html">Buy</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><button id="logoutBtn" style="padding:6px 12px; border-radius:6px; border:none; cursor:pointer; background: transparent; color:#fff; margin-left: 10px;">Logout</button></li>
+      <li><button id="theme-toggle">Theme</button></li>
+    </ul>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Discover Your Signature Scent</h2>
+      <p>Luxury fragrances that define elegance.</p>
+      <a href="collection.html" class="btn">Explore Collection</a>
+    </div>
+  </section>
+
+  <section class="about">
+    <h2>About Us</h2>
+    <p>At Perfume Haven, we curate the finest luxury fragrances from around the world. Our mission is to bring elegance, charm, and long-lasting impressions to your everyday life.</p>
+  </section>
+
+  <section class="featured">
+    <h2>Top Picks</h2>
+    <div class="grid">
+       <div class="card">
+          <img src="https://fimgs.net/images/secundar/o.49676.jpg" alt="Dior Sauvage" class="product-image">
+       </div>
+
+       <div class="card">
+          <img src="https://fimgs.net/mdimg/secundar/o.74439.jpg" alt="Dior Sauvage" class="product-image">
+       </div>
+
+       <div class="card">
+         <img src="https://perfumehubs.com.au/wp-content/uploads/2021/12/dolce-gabbana-light-blue-eau-intense-for-men-perfume-for-him-134164.png" alt="Dior Sauvage" class="product-image">
+       </div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <h2>Featured Perfumes</h2>
+    <div class="grid">
+      <div class="card">
+        <img src="https://ifragranceofficial.com/wp-content/uploads/2021/08/dior-sauvage-eau-de-parfum-2-scaled.jpg" alt="Dior Sauvage" class="product-image">
+        <h3>Dior Sauvage</h3>
+        <p>Fresh and bold fragrance for the modern man.</p>
+        <a href="buy.html?perfume=Dior%20Sauvage" class="buy-btn">Buy Now</a>
+      </div>
+      <div class="card">
+        
+        <img src="https://www.historyhit.com/app/uploads/2022/09/Chanel_N%C2%B05-Cover-Image.jpg?x79957" alt="Channel No.5" class="product-image">
+        <h3>Chanel No. 5</h3>
+        <p>Timeless elegance in a bottle.</p>
+        <a href="buy.html?perfume=Chanel%20No.%205" class="buy-btn">Buy Now</a>
+      </div>
+      <div class="card">
+       <img src="https://www.sephora.it/on/demandware.static/-/Sites-masterCatalog_Sephora/default/dw410cc79e/images/hi-res/alternates/PID_alternate5/PID_alternate5_1109/P2141008_5.jpeg" alt="Tom Ford Noir" class="product-image">
+        <h3>Tom Ford Noir</h3>
+        <p>Deep and sensual, a classic statement scent.</p>
+        <a href="buy.html?perfume=Tom%20Ford%20Noir" class="buy-btn">Buy Now</a>
+      </div>
+    </div>
+  </section>
+  <hr>
+
+  <section class="why-us">
+    <h2 class="card">Why Choose Us?</h2>
+    <ul class="card" style="list-style: none;">
+      <li>✅ 100% Authentic Fragrances</li>
+      <li>🌍 Free Worldwide Shipping</li>
+      <li>🎁 Complimentary Gift Wrapping</li>
+      <li>💬 24/7 Live Chat Support</li>
+    </ul>
+  </section>
+  <hr>
+
+  <section class="testimonials">
+    <h2 class="card">Customer Reviews</h2>
+    <div class="card">
+      <p>“Amazing selection and fast delivery! I love my new perfume.” – Naman</p>
+    </div>
+    <div class="card">
+      <p>“Elegant packaging and authentic scent. Highly recommended!” – Arjun</p>
+    </div>
+  </section>
+  <hr>
+
+  <section class="newsletter">
+    <h2 class="card">Stay in the Contact</h2>
+    <br>
+    <form action="https://formsubmit.co/your-email@example.com" method="POST">
+      <input type="email" name="email" placeholder="Enter your email (You'll get all the latest updates)" required>
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+  <hr>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; 2025 PerfumeLux. All rights reserved.</p>
+      <div class="socials">
+        <a href="https://www.youtube.com/channel/UCm5Qh_OsWVju0fZMPDc-mKw">Youtube</a>
+        <a href="https://www.facebook.com/profile.php?id=100077554596262">Facebook</a>
+        <a href="https://anshgarggupta.github.io/LUXURY-WATCHES/">Wanna To Buy Luxury Watches</a>
+  
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  window.onload = () => {
+    const user = localStorage.getItem('loggedInUser');
+    if (!user) {
+      // Not logged in, redirect to login page
+      window.location.href = 'login.html';
+    }
+  };
+</script>
+
+
+  <!-- Live Chat Integration -->
+  <script>
+    (function() {
+      var chatScript = document.createElement('script');
+      chatScript.src = 'https://example-live-chat.com/widget.js'; // Replace with real widget URL
+      chatScript.async = true;
+      document.body.appendChild(chatScript);
+    })();
+  </script>
+
+
+<script>
+  // Logout functionality
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('loggedInUser'); // clear login info
+    window.location.href = 'login.html';     // redirect to login page
+  });
+</script>
+
+  <script>
+    // Theme toggle
+    document.getElementById("theme-toggle").addEventListener("click", function () {
+      document.body.classList.toggle("dark-theme");
+    });
+
+    // Optional: Carousel script placeholder (to be implemented with CSS or JS)
+  </script>
+
+  
+</body>
+</html>
